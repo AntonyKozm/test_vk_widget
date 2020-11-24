@@ -1,11 +1,17 @@
 <html>
 	<head>
-		<script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
-		<script>
-			vkBridge.send('VKWebAppInit');
-
-			vkBridge.send("VKWebAppCallAPIMethod", {"method": "appWidgets.update", "params": {"type": "text", "code": ' return {"title": "pizdec", "text": "ebat"}', "v": "5.126", "access_token": "b613dd30e4281c621b96c096375f96f18fdd835428823d987390180d87078858d3ffef9753f0efd73b5ac"}})
-			.then(response => {console.log(response);});
-		</script> 
+		<script src="https://vk.com/js/api/xd_connection.js?2"  type="text/javascript"></script>
+		<script type="text/javascript">
+			var widget = '{ "title": "Цитата дня", "title_counter": 42, "text": "«Нам нужно гордиться»", "descr": "Дэвид Кэмерон о победе сторонников выхода страны\n из Евросоюза на референдуме",}'
+			VK.init(
+				function() {
+					VK.api("appWidgets.update", { "code": widget, "type": "text" }, function(data) { console.log(data.response); } )
+				}, 
+				function() {
+					console.log("Я рот ебал это дерьмо!");
+				}, 
+				'5.126'
+			);
+		</script>
 	</head>
 </html>
