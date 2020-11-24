@@ -4,14 +4,25 @@
 		<script>
 			vkBridge.send('VKWebAppInit');
 
-			var widget = {
-				"title": "Гавно залупа",
-				"title_counter": 42,
-				"text": "«Пупа и лупа работали на заводе...»",
-				"descr": "Там крч анекдот про бухгалтерию",
-			}
+			vkBridge.send("VKWebAppGetCommunityToken", {"app_id": 7670926, "group_id": 181918241, "scope": "app_widget"});
 
-			vkBridge.send('appWidgets.update', widget, "text");
+			// var widget = {
+			// 	"title": "Гавно залупа",
+			// 	"title_counter": 42,
+			// 	"text": "«Пупа и лупа работали на заводе...»",
+			// 	"descr": "Там крч анекдот про бухгалтерию",
+			// }
+
+			// vkBridge.send('appWidgets.update', widget, "text");
 		</script> 
+
+<!-- 		<script src="https://vk.com/js/api/xd_connection.js?2"  type="text/javascript"></script>
+		<script type="text/javascript">
+			VK.init(function() {
+				onReady();
+			}, function() {
+				console.error('VK init error', arguments);
+			}, '5.126');
+		</script> -->
 	</head>
 </html>
