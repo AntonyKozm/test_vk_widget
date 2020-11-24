@@ -1,5 +1,11 @@
 <html>
-<body>
-  Привет, грёбанный ВК!
-</body>
+	<head>
+		<script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
+		<script>
+			vkBridge.send('VKWebAppInit');
+
+			var result = vkBridge.send("VKWebAppGetCommunityToken", {"app_id": 7670926, "group_id": 181918241, "scope": "app_id"});
+			console.log(result);
+		</script> 
+	</head>
 </html>
