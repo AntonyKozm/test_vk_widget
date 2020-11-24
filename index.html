@@ -5,7 +5,7 @@
 			vkBridge.send('VKWebAppInit');
 
 			vkBridge.send("VKWebAppGetCommunityToken", {"app_id": 7670926, "group_id": 181918241, "scope": "app_widget"})
-			.then(response => { console.log(response);});
+			.then(response => { console.log(response.access_token);});
 		</script> 
 	</head>
 </html>
