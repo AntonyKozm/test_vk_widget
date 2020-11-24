@@ -27,10 +27,8 @@
 					"text": "«Пупа и лупа работали на заводе...»",
 					"descr": "Там крч анекдот про бухгалтерию",
 				};
-				VK.callMethod("appWidgets.update", "text", widget);
-			}, function() {
-				console.error('VK init error', arguments);
-			}, '5.126');
+				VK.api("appWidgets.update", {"type": "text", "code": widget});
+			};
 		</script>
 	</head>
 </html>
