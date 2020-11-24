@@ -1,18 +1,18 @@
+<!DOCTYPE html>
 <html>
-	<head>
-		<script src="https://vk.com/js/api/xd_connection.js?2"  type="text/javascript"></script>
-		<script type="text/javascript">
-			var widget = '{ "title": "Цитата дня", "title_counter": 42, "text": "«Нам нужно гордиться»", "descr": "Дэвид Кэмерон о победе сторонников выхода страны\n из Евросоюза на референдуме",}'
-			VK.init(
-				function() {
-					VK.callMethod("showAppWidgetPreviewBox", "text", widget);
-					//VK.api("appWidgets.update", { "code": widget, "type": "text" }, function(data) { console.log(data.response); } )
-				}, 
-				function() {
-					console.log("Я рот ебал это дерьмо!");
-				}, 
-				'5.126'
-			);
-		</script>
-	</head>
+<head>
+		<script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
+		<script>
+			const APP_ID = 7670926;
+			const GROUP_ID = 181918241;
+
+			vkBridge.send('VKWebAppInit');
+
+			vkBridge.send("VKWebAppGetCommunityToken", {"app_id": APP_ID, "group_id": GROUP_ID, "scope": "app_widget"})
+			.then(response => {document.write("Токен для изменения виджета: " + response.access_token)});
+		</script> 
+</head>
+<body>
+
+</body>
 </html>
