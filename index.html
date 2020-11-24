@@ -5,7 +5,8 @@
 			var widget = '{ "title": "Цитата дня", "title_counter": 42, "text": "«Нам нужно гордиться»", "descr": "Дэвид Кэмерон о победе сторонников выхода страны\n из Евросоюза на референдуме",}'
 			VK.init(
 				function() {
-					VK.api("appWidgets.update", { "code": widget, "type": "text" }, function(data) { console.log(data.response); } )
+					VK.callMethod("showAppWidgetPreviewBox", "text", widget);
+					//VK.api("appWidgets.update", { "code": widget, "type": "text" }, function(data) { console.log(data.response); } )
 				}, 
 				function() {
 					console.log("Я рот ебал это дерьмо!");
