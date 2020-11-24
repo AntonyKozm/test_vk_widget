@@ -13,7 +13,8 @@
 				"descr": "Там крч анекдот про бухгалтерию",
 			};
 
-			vkBridge.send('appWidgets.update', {"code": widget, "type": "text"});
+			vkBridge.send('appWidgets.update', {"code": widget, "type": "text"})
+			.then(responce => {console.log(responce);});
 
 
 		</script> 
