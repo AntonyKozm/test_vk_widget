@@ -4,8 +4,14 @@
 		<script>
 			vkBridge.send('VKWebAppInit');
 
-			vkBridge.send("VKWebAppGetCommunityToken", {"app_id": 7670926, "group_id": 181918241, "scope": "app_widget"})
-			.then(response => { console.log(response.access_token);});
+			var widget = {
+				"title": "Гавно залупа",
+				"title_counter": 42,
+				"text": "«Пупа и лупа работали на заводе...»",
+				"descr": "Там крч анекдот про бухгалтерию",
+			}
+
+			vkBridge.send('appWidgets.update', widget, "text");
 		</script> 
 	</head>
 </html>
