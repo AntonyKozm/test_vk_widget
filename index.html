@@ -27,7 +27,7 @@
 					"text": "«Пупа и лупа работали на заводе...»",
 					"descr": "Там крч анекдот про бухгалтерию",
 				};
-				VK.callMethod("showAppWidgetPreviewBox", "text", widget);
+				VK.callMethod("appWidgets.update", "text", widget);
 			}, function() {
 				console.error('VK init error', arguments);
 			}, '5.126');
