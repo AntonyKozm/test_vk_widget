@@ -1,17 +1,63 @@
 <!DOCTYPE html>
 <html>
 <head>
-		<script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
-		<script>
-			const APP_ID = 7670926;
-			const GROUP_ID = 181918241;
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="style.css">
 
-			vkBridge.send('VKWebAppInit');
+	<script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
+	<script>
+		var token_viewed = false;
+		var token;
 
-			vkBridge.send("VKWebAppGetCommunityToken", {"app_id": APP_ID, "group_id": GROUP_ID, "scope": "app_widget"})
-			.then(response => {document.write("Токен: " + response.access_token)});
-		</script> 
+		function getToken() {
+				if (!token_viewed) {
+				const APP_ID = document.getElementById('a_id').value;
+				const GROUP_ID = document.getElementById('g_id').value;
+
+				vkBridge.send('VKWebAppInit');
+
+				vkBridge.send("VKWebAppGetCommunityToken", {"app_id": APP_ID, "group_id": GROUP_ID, "scope": "app_widget"})
+				.then(response => {
+					token = response.access_token;
+					var div_token = "<br><div id='token'>Токен: " + response.access_token + "</div>";
+					var button_download = "<br><br><button onclick='dwnld_file();'>Скачать .py файл</button>"
+					document.body.innerHTML += div_token + button_download;});
+				token_viewed = true;
+			}
+		}
+
+		function dwnld_file() {
+			let a = document.createElement("a");
+			let file = new Blob(["bot_token='" + token + "'"]);
+			a.href = URL.createObjectURL(file);
+			a.download = "config.py";
+			a.click();
+		}
+	</script> 
 </head>
 <body>
+	<table cellspacing="10">
+		<tr>
+			<td>
+				Group ID
+			</td>
+			<td>
+				<input type="text" id="g_id">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				App ID
+			</td>
+			<td>
+				<input type="text" id="a_id">
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" align="center">
+				<button onclick="getToken();">Получить токен</button>
+			</td>
+		</tr>
+	</table>
 </body>
 </html>
