@@ -11,8 +11,8 @@
 
 		function getToken() {
 				if (!token_viewed) {
-				const APP_ID = document.getElementById('a_id').value;
-				const GROUP_ID = document.getElementById('g_id').value;
+				const APP_ID = parseInt(document.getElementById('a_id').value);
+				const GROUP_ID = parseInt(document.getElementById('g_id').value);
 
 				vkBridge.send('VKWebAppInit');
 
